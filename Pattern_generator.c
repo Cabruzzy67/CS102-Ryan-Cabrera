@@ -65,6 +65,7 @@ void pascal(int size) {
             // Calculate next number using binomial coefficient H
             num = num * (line - j) / (j + 1);
         }
+
         printf("\n");
     }
 }
