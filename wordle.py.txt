@@ -1,0 +1,48 @@
+import random
+
+WORD_LIST = [
+    "CRANE", "APPLE", "BRICK", "PLANT", "GHOST",
+    "WORDS", "TACOS", "OPIUM", "CARTI", "GANGY"
+]
+#Haaris check this
+print("Welcome to Wordle Crodiee, you ain't getting this")
+print("You have 6 tries to guess the 5-letter word gang.\n")
+
+secret_index = random.randint(0, len(WORD_LIST) - 1)
+secret = WORD_LIST[secret_index]
+
+max_attempts = 6
+guessed = False
+
+for attempt in range(1, max_attempts + 1):
+    print("Ts Attempt", attempt, "/", max_attempts)
+#Haaris what the helly is ts
+    while True:
+        guess = input("Enter ye 5-letter guess: ").strip().upper()
+        if len(guess) != 5:
+            print("Your guess must be exactly 5 letters twizzy")
+        elif guess not in WORD_LIST:
+            print("That is NOT a word.")
+        else:
+            break
+
+    feedback = ""
+    for i in range(5):
+        if guess[i] == secret[i]:
+            feedback += "🟩"
+        elif guess[i] in secret:
+            feedback += "🟨"
+        else:
+            feedback += "⬜"
+
+    print(" ".join(guess))
+    print(feedback)
+    print()
+
+    if guess == secret:
+        print("Damn you got the word in", attempt, "attempts, type beat")
+        guessed = True
+        break
+
+if not guessed:
+    print("You're Almanaklout.. The word was:", secret)
